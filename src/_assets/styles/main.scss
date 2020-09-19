@@ -3,8 +3,16 @@
 @import 'mixins';
 
 html {
-  font-family: system-ui;
+  font-family: 'Scope One', serif; 
   line-height: 1.5;
+}
+
+body {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Secular One', sans-serif;
 }
 
 img {

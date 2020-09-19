@@ -1,10 +1,12 @@
+---
+classes: home__bg
+---
 <!--
   Templates can look very similar to components (like header.html) with the HTML at the top and the
   corresponding 'stylesheet' and 'javascript' paired shortcodes below.
 -->
 
 <main class="home">
-  <h1 class="home__title">The Fastest Eleventy Starter&nbsp;Project</h1>
   <article class="home__content">
     <!--
       Include Markdown using the 'markdown' paired shortcode. Make sure that you strip whitespace
@@ -16,23 +18,45 @@
     <!--
       Here's an example of the picture shortcode which outputs a responsive picture with WebP support;
       Parameters are src, alt, sizes and loading (lazy or eager). Sizes and loading are optional.
-    -->
     {% picture 'car.jpg', 'Panning photo of grey coupe on road', '90vw', 'lazy' %}
+    -->
   </article>
 </main>
+{% include 'footer.html' %}
 
 {% stylesheet 'scss' %}
   // Import sass from your styles directory
   @import 'mixins';
 
+  .home__bg {
+    background: linear-gradient(150deg, white, rgba(255,255,255, 0)),
+      radial-gradient(circle at center, #FF7CCB, #FF7C9C 20%, #FF7CAB 30%, transparent 50%),
+      linear-gradient(to bottom, #02E1EF, #6A75D7);
+  }
+
   .home {
     @include container;
 
-    margin-bottom: 4rem;
+    min-height: 100%;
+    z-index: 0;
+    position: relative;
+    
 
-    &__title {
+    & h1 {
       margin-bottom: 2rem;
       margin-top: 2rem;
+      font-size: 2vw;
+      font-family: Scope One;
+      font-size: 10vmax;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0em;
+      text-align: left;
+
+    }
+
+    &__content {
+      min-height: 100%;
     }
 
     &__content > * + {
@@ -42,7 +66,21 @@
 
       picture,
       p > picture:only-child {
-        margin-top: 2rem;
+        max-width: 250px;
+        position: fixed;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%);
+        z-index: -1;
+        width: 50vw;
+        opacity: 50%;
+        padding: 0 !important;
+      }
+
+      p > picture:only-child img {
+        transform: translate(0%, -50%);
+        filter: saturate(50%);
+        mix-blend-mode: multiply;
       }
     }
   }
